@@ -1,15 +1,9 @@
-import { Roboto_Slab } from "next/font/google";
-
-const robotoSlab = Roboto_Slab({
-  subsets: ["latin"],
-  weight: ["400", "700"], // Regular + Bold
-  display: "swap",
-});
+import { robotoSlab } from "@/utils/fonts";
 
 const Header = () => {
   return (
     <header
-      className={`${robotoSlab.className} text-zinc-600 py-10 border-b flex flex-col items-center justify-center text-center px-4`}
+      className={`${robotoSlab.className} text-zinc-600 py-10 pt-15 flex flex-col items-center justify-center text-center px-4`}
     >
       <h1 className="uppercase font-extrabold text-3xl sm:text-4xl md:text-5xl">
         youssef el ammari
