@@ -2,18 +2,17 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import { robotoSlab } from "@/utils/fonts";
 
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
   speed = "fast",
-  pauseOnHover = true,
   className,
 }: {
   items: {
-    quote: string;
+    icon: string;
     name: string;
-    title: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -54,12 +53,12 @@ export const InfiniteMovingCards = ({
       if (direction === "left") {
         containerRef.current.style.setProperty(
           "--animation-direction",
-          "forwards",
+          "forwards"
         );
       } else {
         containerRef.current.style.setProperty(
           "--animation-direction",
-          "reverse",
+          "reverse"
         );
       }
     }
@@ -80,7 +79,7 @@ export const InfiniteMovingCards = ({
       ref={containerRef}
       className={cn(
         "scroller relative z-20 max-w-[90%] px-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] bg-black/10",
-        className,
+        className
       )}
     >
       <ul
@@ -90,27 +89,32 @@ export const InfiniteMovingCards = ({
           start && "animate-scroll"
         )}
       >
-        {items.map((item, idx) => (
+        {items.map((item) => (
           <li
             className="relative shrink-0 border-zinc-700 px-2"
             key={item.name}
           >
-            <blockquote>
+            <blockquote className="flex flex-col border-2 rounded-lg p-4 bg-black/50 hover:bg-black/70 transition-colors duration-300">
+              {/* This div is likely for a background/border/hover effect */}
               <div
                 aria-hidden="true"
                 className="user-select-none pointer-events-none absolute -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>
-              <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-white">
-                {item.quote}
-              </span>
-              <div className="relative z-20 mt-6 flex flex-col items-center">
-                <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
-                    {item.name}
-                  </span>
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
-                    {item.title}
-                  </span>
+              >
+                {/* Icon was moved from here */}
+              </div>
+
+              {/* This div now holds both the icon and the name in a row */}
+              <div className="relative z-20 flex flex-row items-center gap-4">
+                {/* Icon */}
+                <img
+                  src={`/techIcons/${item.icon}`}
+                  alt={item.name}
+                  className="h-8 w-8 object-contain dark:invert bg-transparent "
+                />
+
+                {/* Name */}
+                <span className={`${robotoSlab.className} text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400`}>
+                  {item.name}
                 </span>
               </div>
             </blockquote>
