@@ -8,7 +8,6 @@ export const InfiniteMovingCards = ({
   items,
   direction = "left",
   speed = "fast",
-  pauseOnHover = true,
   className,
 }: {
   items: {
@@ -90,12 +89,12 @@ export const InfiniteMovingCards = ({
           start && "animate-scroll"
         )}
       >
-        {items.map((item, idx) => (
+        {items.map((item) => (
           <li
             className="relative shrink-0 border-zinc-700 px-2"
             key={item.name}
           >
-            <blockquote className="flex flex-col border-2 border-zinc-700 rounded-lg p-4 bg-black/50 hover:bg-black/70 transition-colors duration-300">
+            <blockquote className="flex flex-col border-2 rounded-lg p-4 bg-black/50 hover:bg-black/70 transition-colors duration-300">
               {/* This div is likely for a background/border/hover effect */}
               <div
                 aria-hidden="true"

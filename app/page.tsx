@@ -2,6 +2,7 @@ import { MovingBar } from "@/components/MovingBar/movingBar";
 import { NavbarDemo } from "./../components/Navbar/navbar";
 import Header from "@/components/Header/header";
 import About from "@/components/About/about";
+import { CoreSkills } from '@/components/CoreSkills/CoreSkills';
 export default function Home() {
   return (
     <div className="min-h-screen relative w-full">
@@ -10,7 +11,7 @@ export default function Home() {
         <Header />
         <About />
         <MovingBar />
-        <About />
+        <CoreSkills />
       </main>
       <footer className=""></footer>
     </div>
